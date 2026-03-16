@@ -1,120 +1,295 @@
-# Automated Financial Data ETL Pipeline for Stock Market Analytics
+<div align="center">
+
+# 📈 Automated Financial Data ETL Pipeline
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=26&pause=1000&color=00F72D&center=true&vCenter=true&width=650&lines=Production+Grade+ETL+Pipeline;Stock+Market+Data+Automation;Python+%7C+PostgreSQL+%7C+Pandas+%7C+SQLAlchemy" />
+
+<br>
 
 ![Python](https://img.shields.io/badge/python-3.11-blue.svg)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue.svg)
-![Pandas](https://img.shields.io/badge/Pandas-2.2.0-orange.svg)
-![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0.25-green.svg)
+![Pandas](https://img.shields.io/badge/Pandas-2.2-orange.svg)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0-green.svg)
+![Docker](https://img.shields.io/badge/docker-supported-blue)
 
-## Project Overview
+</div>
 
-This project is a complete, production-grade **Financial Data ETL Pipeline** designed to automate the extraction of historical stock market data, perform advanced financial transformations, and load the processed datasets into a PostgreSQL database for downstream analytics.
+---
 
-## Architecture
+# 📊 Repository Stats
 
-1.  **Extraction**: Historical OHLCV (Open, High, Low, Close, Volume) data is fetched for a configurable list of tickers (e.g., AAPL, MSFT, GOOGL) using the `yfinance` API.
-2.  **Transformation**: Data is cleaned using `pandas`, handling missing values and duplicates. Financial indicators such as 7-day/30-day Moving Averages, Daily Returns, and Rolling Volatility are calculated.
-3.  **Loading**: The transformed data is loaded into a PostgreSQL database using an "upsert" mechanism (using `SQLAlchemy` and `psycopg2`) to ensure no duplicate records exist for any given ticker and date.
+<div align="center">
 
-## Project Structure
+### 👀 Visitors
 
-```text
-financial-etl-pipeline/
-│
-├── analytics/           # Example SQL queries for data analysis
+![Visitors](https://api.visitorbadge.io/api/visitors?path=theatharvagai/etl-pipeline&countColor=%23263759)
+
+<br>
+
+### 📈 GitHub Stats
+
+![GitHub stats](https://github-readme-stats.vercel.app/api?username=theatharvagai&show_icons=true&theme=tokyonight)
+
+<br>
+
+### 🔥 Most Used Languages
+
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=theatharvagai&layout=compact&theme=tokyonight)
+
+</div>
+
+---
+
+# 📊 Project Overview
+
+This project implements a **production-style Financial Data ETL Pipeline** that automatically:
+
+✔ Extracts historical stock market data  
+✔ Performs financial transformations  
+✔ Loads processed datasets into PostgreSQL  
+
+The system enables **analytics, financial insights, and automated data pipelines**.
+
+---
+
+# ⚙️ ETL Pipeline Architecture
+
+```
+        +-------------+
+        | yFinance API|
+        +------|------+
+               |
+               v
+        +-------------+
+        |   Extract   |
+        | Fetch OHLCV |
+        +------|------+
+               |
+               v
+        +-------------+
+        | Transform   |
+        | Pandas Data |
+        | Indicators  |
+        +------|------+
+               |
+               v
+        +-------------+
+        | Load        |
+        | PostgreSQL  |
+        +-------------+
+```
+
+---
+
+# ✨ Features
+
+## 📥 Extraction
+- Pulls **historical OHLCV stock data**
+- Supports configurable tickers
+- Uses **yfinance API**
+
+## 🔄 Transformation
+Financial indicators computed:
+
+- 7-Day Moving Average
+- 30-Day Moving Average
+- Daily Returns
+- Rolling Volatility
+
+## 📤 Loading
+- PostgreSQL database
+- Upsert logic
+- SQLAlchemy ORM
+
+---
+
+# 🖼️ Screenshots
+
+## Pipeline Execution
+
+<p align="center">
+<img src="./Screenshot 2026-03-16 001839.png" width="850">
+</p>
+
+---
+
+## Database Output
+
+<p align="center">
+<img src="./Screenshot 2026-03-16 001927.png" width="850">
+</p>
+
+---
+
+# 📁 Project Structure
+
+```
+etl-pipeline/
+
+├── analytics/
 │   └── sample_queries.sql
-├── config/              # YAML configuration files
+│
+├── config/
 │   └── config.yaml
-├── data/                # Directory for local data exports (if any)
-├── db/                  # Database schema and connection logic
+│
+├── data/
+│
+├── db/
 │   ├── db_connection.py
 │   └── schema.sql
-├── etl/                 # Core ETL logic (Extract, Transform, Load)
+│
+├── etl/
 │   ├── extract.py
 │   ├── transform.py
 │   ├── load.py
 │   └── pipeline.py
-├── tests/               # Automated unit tests
+│
+├── tests/
 │   └── test_pipeline.py
-├── .env                 # Environment variables (DB credentials)
-├── Dockerfile           # Containerization configuration
-├── main.py              # Main entry point for the pipeline
-├── README.md            # Project documentation
-└── requirements.txt     # Python dependencies
+│
+├── .env
+├── Dockerfile
+├── main.py
+├── README.md
+└── requirements.txt
 ```
 
-## Setup Instructions
+---
 
-### 1. Clone the repository
+# ⚙️ Setup Instructions
+
+## 1️⃣ Clone Repository
+
 ```bash
-git clone https://github.com/your-username/financial-etl-pipeline.git
-cd financial-etl-pipeline
+git clone https://github.com/theatharvagai/etl-pipeline.git
+cd etl-pipeline
 ```
 
-### 2. Configure Environment Variables
-Create a `.env` file in the root directory (or update the provided one):
-```text
+---
+
+# 🔐 Configure Environment Variables
+
+Create `.env`
+
+```
 DB_PASSWORD=your_secure_password
 ```
 
-### 3. Install Dependencies
-It's recommended to use a virtual environment:
+---
+
+# 📦 Install Dependencies
+
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+source venv/bin/activate
+# Windows
+venv\Scripts\activate
+
 pip install -r requirements.txt
 ```
 
-### 4. Database Setup
-Ensure you have a PostgreSQL instance running. You can update the database settings in `config/config.yaml`. The pipeline will automatically create the `stock_prices` table if it doesn't exist.
+---
 
-## Running the Pipeline
+# 🗄️ Database Setup
 
-To execute the full ETL process:
+Ensure **PostgreSQL** is running.
+
+Update configuration in:
+
+```
+config/config.yaml
+```
+
+The pipeline automatically creates the table:
+
+```
+stock_prices
+```
+
+---
+
+# ▶️ Running the Pipeline
+
 ```bash
 python main.py
 ```
 
-To run unit tests:
+---
+
+# 🧪 Run Tests
+
 ```bash
 pytest tests/
 ```
 
-## Scheduling with Cron
+---
 
-To run the pipeline every day at 6 AM:
-1. Open your crontab:
-   ```bash
-   crontab -e
-   ```
-2. Add the following line (update paths as needed):
-   ```text
-   0 6 * * * /path/to/venv/bin/python /path/to/project/main.py >> /path/to/project/pipeline.log 2>&1
-   ```
+# ⏱️ Scheduling with Cron
 
-## Docker Support
+Run pipeline daily at **6 AM**
 
-Build and run the pipeline inside a container:
 ```bash
-docker build -t financial-etl-pipeline .
-docker run --env-file .env financial-etl-pipeline
+crontab -e
 ```
 
-## Example Analytics Queries
+Add:
 
-After running the pipeline, you can run these queries in your PostgreSQL terminal:
+```
+0 6 * * * /path/to/venv/bin/python /path/to/project/main.py >> pipeline.log 2>&1
+```
 
-*   **Average Daily Return per Stock**
-    ```sql
-    SELECT ticker, AVG(daily_return) FROM stock_prices GROUP BY ticker;
-    ```
-*   **Volatility Ranking**
-    ```sql
-    SELECT ticker, AVG(volatility) FROM stock_prices GROUP BY ticker ORDER BY 2 DESC;
-    ```
+---
 
-## Future Improvements
+# 🐳 Docker Support
 
-*   Integrate with Apache Airflow for advanced orchestration.
-*   Add more technical indicators (RSI, Bollinger Bands, MACD).
-*   Implement real-time data streaming using Kafka.
-*   Build a dashboard using Streamlit or Grafana.
+Build container
+
+```bash
+docker build -t etl-pipeline .
+```
+
+Run container
+
+```bash
+docker run --env-file .env etl-pipeline
+```
+
+---
+
+# 📊 Example Analytics Queries
+
+### Average Daily Return
+
+```sql
+SELECT ticker, AVG(daily_return)
+FROM stock_prices
+GROUP BY ticker;
+```
+
+### Volatility Ranking
+
+```sql
+SELECT ticker, AVG(volatility)
+FROM stock_prices
+GROUP BY ticker
+ORDER BY 2 DESC;
+```
+
+---
+
+# 🚀 Future Improvements
+
+- Apache Airflow orchestration  
+- Kafka streaming pipeline  
+- Streamlit dashboard  
+- Grafana monitoring  
+- Additional indicators (RSI, MACD)
+
+---
+
+<div align="center">
+
+### ⭐ If you like this project, give it a star!
+
+</div>
