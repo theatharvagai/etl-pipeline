@@ -16,29 +16,7 @@
 
 ---
 
-# 📊 Repository Stats
 
-<div align="center">
-
-### 👀 Visitors
-
-![Visitors](https://api.visitorbadge.io/api/visitors?path=theatharvagai/etl-pipeline&countColor=%23263759)
-
-<br>
-
-### 📈 GitHub Stats
-
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=theatharvagai&show_icons=true&theme=tokyonight)
-
-<br>
-
-### 🔥 Most Used Languages
-
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=theatharvagai&layout=compact&theme=tokyonight)
-
-</div>
-
----
 
 # 📊 Project Overview
 
